@@ -3,9 +3,11 @@ import sys
 class Game:
 
     number = 0
+    newGuess = ""
     usedLetters = []
-    limbs = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
+    body = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
 
+    # constructor
     def __init__(self, number):
         self.number = number
 
@@ -17,17 +19,25 @@ class Game:
 
     # ask the user for their guess
     def promptForGuess(self):
+        global newGeuss
         newGeuss = str(input("Please select a character guess: "))
+        
+        while True:
+            if ( self.validateGuess(self.usedLetters, newGeuss) ):
+                print(self.usedLetters)
+                newGuess = str(input("Please enter a character you have not previously used: "))
+            else:
+                return newGuess
 
-        self.validateGuess(self.usedLetters, newGeuss)
 
     # validate the guess to see if it has already been used
     def validateGuess(self, usedLetters, newLetter):
-        if( newLetter not in usedLetters ):
-            usedLetters.insert(newLetter)
-            return False
-        else:
+        
+        if( newLetter.lower() not in usedLetters ):
+            usedLetters.insert(len(self.usedLetters), newLetter)
             return True
+        else:
+            return False
 
     # break guessed word into an array
     # add character at the correct slot
