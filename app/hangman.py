@@ -1,15 +1,16 @@
 import sys
 
+
+BODY = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
+STATE = []
+COUNTER = 0
+
 class Game:
 
     number = 0
     newGuess = ""
     word = ""
-    usedLetters = []
-
-    body = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
-    gameState = []
-    counter = 0
+    usedLetters = ['c']
 
     # constructor
     def __init__(self, number):
@@ -40,16 +41,20 @@ class Game:
         
         if( newLetter.lower() not in usedLetters ):
             usedLetters.insert(len(self.usedLetters), newLetter)
-            
             return False
         else:
+            self.addLimb(word, newLetter)
             return True
 
     # for each wrong guess, add a limb
     def addLimb(self, word, letter):
-        count = self.counter
+        global COUNTER
+        global STATE
         if ( letter not in word ):
-            gameState = gameState.insert(count+1, self.body[count])
+            STATE.insert(COUNTER, BODY[COUNTER])
+            print(STATE)
+        
+        COUNTER+1
         return True
 
     # check progress of current game
