@@ -54,7 +54,7 @@ class Game:
             STATE.insert(COUNTER, BODY[COUNTER])
             print(STATE)
         
-        COUNTER+1
+        COUNTER += 1
         return True
 
     # check progress of current game
