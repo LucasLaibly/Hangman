@@ -23,7 +23,7 @@ def run():
 
     # prompt for user to begin gameplay
     global letter
-    letter= game.promptForGuess()
+    letter = game.promptForGuess()
 
 if __name__ == "__main__":
     run()

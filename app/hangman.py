@@ -4,6 +4,7 @@ import sys
 BODY = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
 STATE = []
 COUNTER = 0
+WORD = ""
 
 class Game:
 
@@ -20,8 +21,8 @@ class Game:
     def guessWord(self, number):
         words = ["pink", "blue", "green", "white"]
 
-        global word
-        word = words[number]
+        global WORD
+        WORD = words[number]
 
         return words[number]
 
@@ -43,7 +44,7 @@ class Game:
             usedLetters.insert(len(self.usedLetters), newLetter)
             return False
         else:
-            self.addLimb(word, newLetter)
+            self.addLimb(WORD, newLetter)
             return True
 
     # for each wrong guess, add a limb
@@ -58,5 +59,7 @@ class Game:
         return True
 
     # check progress of current game
+    def progress(self):
+        print(STATE)
 
     # if the user knows the word: allow for a total guess [ ONCE ]
