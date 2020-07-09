@@ -76,6 +76,15 @@ class Game:
 
     # check progress of current game
     def progress(self):
-        print(STATE)
+        return STATE
 
+    # check the current used letters
+    def usedLetterList(self):
+        return usedLetters
+    
     # if the user knows the word: allow for a total guess [ ONCE ]
+    def coinFlip(self, chance):
+        if chance == WORD:
+            return True
+        else:
+            return False

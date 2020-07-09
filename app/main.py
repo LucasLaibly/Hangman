@@ -25,7 +25,15 @@ def run():
     # prompt for user to begin gameplay
     letter = game.promptForGuess()
 
-    
+    # the end of the game
+    solution = input("What is your final guess? ")
+    result = game.coinFlip(solution)
+
+    if(result):
+        print("you win. neato.")
+    else:
+        print("you lost. big sad.")
+
 
 if __name__ == "__main__":
     run()
