@@ -5,13 +5,13 @@ BODY = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
 STATE = []
 COUNTER = 0
 WORD = ""
+usedLetters = []
 
 class Game:
 
     number = 0
     newGuess = ""
     word = ""
-    usedLetters = ['c']
 
     # constructor
     def __init__(self, number):
@@ -19,38 +19,54 @@ class Game:
 
     # array of words that the user can get assigned
     def guessWord(self, number):
+        global WORD
+
         words = ["pink", "blue", "green", "white"]
 
-        global WORD
         WORD = words[number]
 
         return words[number]
 
     # ask the user for their guess
     def promptForGuess(self):
-        global newGeuss
-        newGeuss = str(input("Please select a character guess: "))
-        
-        if ( self.validateGuess(self.usedLetters, newGeuss) ):
-            print(self.usedLetters)
-            newGuess = str(input("Please enter a character you have not previously used: "))
-        
+        global usedLetters
+        while True:
+            newGeuss = input("Please enter your guess: ")
+            
+            if newGeuss.isdigit() or len(newGeuss) >= 2:
+                print("only enter real letters idiot\n")
+            else:
+                self.validateGuess(usedLetters, newGeuss)
+                break
+
         return newGeuss
 
     # validate the guess to see if it has already been used
     def validateGuess(self, usedLetters, newLetter):
-        
-        if( newLetter.lower() not in usedLetters ):
-            usedLetters.insert(len(self.usedLetters), newLetter)
+        newLetter = newLetter.lower()
+
+        # letter in word and unique
+        if(newLetter in usedLetters and newLetter in WORD):
+            usedLetters.insert(len(usedLetters), newLetter)
             return False
+
+        # letter is not in the word but unique    
+        elif (newLetter not in usedLetters and newLetter not in WORD):
+            usedLetters.insert(len(usedLetters), newLetter)
+            self.addLimb(WORD, newLetter)
+            return False
+
+        # user is a genius: letter not in word and has been used    
         else:
             self.addLimb(WORD, newLetter)
+            print("not only have you used that letter, it is also not in the word.")
             return True
 
     # for each wrong guess, add a limb
     def addLimb(self, word, letter):
         global COUNTER
         global STATE
+
         if ( letter not in word ):
             STATE.insert(COUNTER, BODY[COUNTER])
             print(STATE)

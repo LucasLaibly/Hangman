@@ -5,6 +5,8 @@ wordToGuess = ""
 letter = ""
 
 def run():
+    global letter
+    global wordToGuess
 
     # gets the user to enter a number
     while True:
@@ -18,12 +20,12 @@ def run():
     game = hangman.Game(number)
 
     # retrieve the hidden word
-    global wordToGuess
     wordToGuess  = game.guessWord(number)
 
     # prompt for user to begin gameplay
-    global letter
     letter = game.promptForGuess()
+
+    
 
 if __name__ == "__main__":
     run()
