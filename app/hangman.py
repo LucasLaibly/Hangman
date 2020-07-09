@@ -30,6 +30,7 @@ class Game:
     # ask the user for their guess
     def promptForGuess(self):
         global usedLetters
+        
         while True:
             newGeuss = input("Please enter your guess: ")
             
