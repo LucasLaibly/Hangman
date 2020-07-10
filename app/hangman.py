@@ -1,17 +1,16 @@
 import sys
 import collections
 
-
 BODY = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
 STATE = []
 COUNTER = 0
 WORD = ""
 usedLetters = []
+NEWGUESS = ""
 
 class Game:
 
     number = 0
-    newGuess = ""
     word = ""
 
     # constructor
@@ -31,22 +30,20 @@ class Game:
     # ask the user for their guess
     def promptForGuess(self):
         global usedLetters
+        global NEWGUESS
         
-        while True:
-            newGeuss = input("Please enter your guess: ")
-            
-            if newGeuss.isdigit() or len(newGeuss) >= 2:
-                print("only enter real letters idiot\n")
-            else:
-                self.validateGuess(usedLetters, newGeuss)
-                break
+        try:
+            NEWGUESS = input("Please enter your guess: ")
+            self.validateGuess(usedLetters, NEWGUESS)
+        except NameError:
+            pass
 
-        return newGeuss
+        return NEWGUESS
 
     # validate the guess to see if it has already been used
     def validateGuess(self, usedLetters, newLetter):
         newLetter = newLetter.lower()
-
+        
         # letter in word and unique
         if(newLetter not in usedLetters and newLetter in WORD):
             usedLetters.insert(len(usedLetters), newLetter)
@@ -68,7 +65,7 @@ class Game:
     def addLimb(self, word, letter):
         global COUNTER
         global STATE
-
+        
         if ( letter not in word ):
             STATE.insert(COUNTER, BODY[COUNTER])
             print(STATE)
@@ -93,7 +90,7 @@ class Game:
 
     # end game if the user has completed the body
     def kill(self):
-        if (collections.Counter(STATE) == collections.Counter(BODY)):
+        if (STATE == BODY):
             return True
         else:
             return False

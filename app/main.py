@@ -5,6 +5,9 @@ wordToGuess = ""
 letter = ""
 
 def run():
+
+    global wordToGuess
+
     # gets the user to enter a number
     while True:
         try:
@@ -22,14 +25,13 @@ def run():
 
     while True:
         global letter
-        global wordToGuess
 
-        if (game.kill):
+        if (game.kill()):
             print("you lose.")
             return
 
-        action = input("Please select your action. Enter (1) for continue, (2) for making your final guess: ")
-
+        action = str(input("Please select your action. Enter (1) for continue, (2) for making your final guess: "))
+        
         if ( action == "1"):
             print("\n")
         else:
@@ -42,7 +44,7 @@ def run():
             else:
                 print("you lost. big sad.")
                 break
-
+        
         # prompt for user to begin gameplay
         letter = game.promptForGuess()
 
