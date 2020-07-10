@@ -47,7 +47,7 @@ class Game:
         newLetter = newLetter.lower()
 
         # letter in word and unique
-        if(newLetter in usedLetters and newLetter in WORD):
+        if(newLetter not in usedLetters and newLetter in WORD):
             usedLetters.insert(len(usedLetters), newLetter)
             return False
 
