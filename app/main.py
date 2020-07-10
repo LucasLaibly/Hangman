@@ -16,6 +16,10 @@ def run():
     # build the game around the number
     game = hangman.Game(number)
 
+
+    # retrieve the hidden word
+    wordToGuess  = game.guessWord(number)
+
     while True:
         global letter
         global wordToGuess
@@ -38,9 +42,6 @@ def run():
             else:
                 print("you lost. big sad.")
                 break
-
-        # retrieve the hidden word
-        wordToGuess  = game.guessWord(number)
 
         # prompt for user to begin gameplay
         letter = game.promptForGuess()

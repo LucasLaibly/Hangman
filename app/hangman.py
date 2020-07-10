@@ -91,6 +91,7 @@ class Game:
         else:
             return False
 
+    # end game if the user has completed the body
     def kill(self):
         if (collections.Counter(STATE) == collections.Counter(BODY)):
             return True
