@@ -20,6 +20,10 @@ def run():
         global letter
         global wordToGuess
 
+        if (game.kill):
+            print("you lose.")
+            return
+
         action = input("Please select your action. Enter (1) for continue, (2) for making your final guess: ")
 
         if ( action == "1"):

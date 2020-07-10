@@ -1,4 +1,5 @@
 import sys
+import collections
 
 
 BODY = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
@@ -86,6 +87,12 @@ class Game:
     # if the user knows the word: allow for a total guess [ ONCE ]
     def coinFlip(self, chance):
         if chance == WORD:
+            return True
+        else:
+            return False
+
+    def kill(self):
+        if (collections.Counter(STATE) == collections.Counter(BODY)):
             return True
         else:
             return False
