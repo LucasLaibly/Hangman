@@ -23,13 +23,14 @@ def run():
         action = input("Please select your action. Enter (1) for continue, (2) for making your final guess: ")
 
         if ( action == "1"):
-            continue
+            print("\n")
         else:
             # the end of the game
             solution = input("What is your final guess? ")
             result = game.coinFlip(solution)
             if(result):
                 print("you win. neato.")
+                return
             else:
                 print("you lost. big sad.")
                 break
