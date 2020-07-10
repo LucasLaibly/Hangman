@@ -19,7 +19,6 @@ def run():
     # build the game around the number
     game = hangman.Game(number)
 
-
     # retrieve the hidden word
     wordToGuess  = game.guessWord(number)
 
