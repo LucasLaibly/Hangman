@@ -5,7 +5,7 @@ wordToGuess = ""
 letter = ""
 
 def run():
-    global letter
+
     global wordToGuess
 
     # gets the user to enter a number
@@ -15,24 +15,39 @@ def run():
             break
         except:
             print("Not a valid value, try again")
-
+    
     # build the game around the number
     game = hangman.Game(number)
 
     # retrieve the hidden word
     wordToGuess  = game.guessWord(number)
 
-    # prompt for user to begin gameplay
-    letter = game.promptForGuess()
+    while True:
+        global letter
 
-    # the end of the game
-    solution = input("What is your final guess? ")
-    result = game.coinFlip(solution)
+        if (game.kill()):
+            print("you lose.")
+            return
 
-    if(result):
-        print("you win. neato.")
-    else:
-        print("you lost. big sad.")
+        action = str(input("Please select your action. Enter (1) for continue, (2) for making your final guess, (3) for more options: "))
+        
+        if ( action == "1"):
+            print("\n")
+        elif ( action == "3"):
+            game.options()
+        else:
+            # the end of the game
+            solution = input("What is your final guess? ")
+            result = game.coinFlip(solution)
+            if(result):
+                print("you win. neato.")
+                return
+            else:
+                print("you lost. big sad.")
+                break
+        
+        # prompt for user to begin gameplay
+        letter = game.promptForGuess()
 
 
 if __name__ == "__main__":
