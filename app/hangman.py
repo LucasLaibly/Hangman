@@ -31,6 +31,7 @@ class Game:
     def promptForGuess(self):
         global usedLetters
         
+<<<<<<< Updated upstream
         while True:
             newGeuss = input("Please enter your guess: ")
             
@@ -39,6 +40,13 @@ class Game:
             else:
                 self.validateGuess(usedLetters, newGeuss)
                 break
+=======
+        try:
+            NEWGUESS = input("Please enter your letter guess: ")
+            self.validateGuess(usedLetters, NEWGUESS)
+        except NameError:
+            pass
+>>>>>>> Stashed changes
 
         return newGeuss
 
