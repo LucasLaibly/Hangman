@@ -41,12 +41,6 @@ class Game:
                 self.validateGuess(usedLetters, newGeuss)
                 break
 
-        try:
-            NEWGUESS = input("Please enter your letter guess: ")
-            self.validateGuess(usedLetters, NEWGUESS)
-        except NameError:
-            pass
-
         return NEWGUESS
 
     # validate the guess to see if it has already been used
