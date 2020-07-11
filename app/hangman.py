@@ -1,5 +1,4 @@
 import sys
-import collections
 
 BODY = ["head", "body", "left arm", "right arm", "left leg", "right leg"]
 STATE = []
