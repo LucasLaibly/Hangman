@@ -74,9 +74,9 @@ class Game:
         return True
 
     def options(self):
-        print("What do you desire?")
+        print("What do you desire? ")
 
-        choice = input("(1) for current game state, (2) for current used letters")
+        choice = input("(1) for current game state, (2) for current used letters: ")
 
         if ( choice == "1" ):
             prog = self.progress()
