@@ -73,6 +73,18 @@ class Game:
         COUNTER += 1
         return True
 
+    def options(self):
+        print("What do you desire?")
+
+        choice = input("(1) for current game state, (2) for current used letters")
+
+        if ( choice == "1" ):
+            prog = self.progress()
+            print(prog)
+        else:
+            history = self.usedLetterList()
+            print(history)
+
     # check progress of current game
     def progress(self):
         return STATE

@@ -29,10 +29,12 @@ def run():
             print("you lose.")
             return
 
-        action = str(input("Please select your action. Enter (1) for continue, (2) for making your final guess: "))
+        action = str(input("Please select your action. Enter (1) for continue, (2) for making your final guess, (3) for more options: "))
         
         if ( action == "1"):
             print("\n")
+        elif ( action == "3"):
+            game.options()
         else:
             # the end of the game
             solution = input("What is your final guess? ")
